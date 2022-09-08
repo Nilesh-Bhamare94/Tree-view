@@ -1,21 +1,20 @@
 import React from "react";
 import { useState } from "react";
-import ReactDOM from "react-dom";
 import Tree from "react-d3-tree";
 import { DummyData } from "./DummyData";
 import "./styles.css";
 import { Input, Button } from "antd";
 
-const svgSquare = {
-  shape: "rect",
-  shapeProps: {
-    width: 180,
-    height: 20,
-    x: 0,
-    y: -20,
-    color: "#ffffff"
-  }
-};
+// const svgSquare = {
+//   shape: "rect",
+//   shapeProps: {
+//     width: 180,
+//     height: 20,
+//     x: 0,
+//     y: -20,
+//     color: "#ffffff"
+//   }
+// };
 
 const test = {
   shape: "rect",
@@ -28,27 +27,27 @@ const test = {
   }
 };
 
-const nodeStyle = (
-  <svg viewbox="0 0 50 20" xmlns="http://www.w3.org/2000/svg">
-    <rect
-      width="50"
-      height="10"
-      x="10"
-      y="10"
-      style="fill: skyblue; stroke: cadetblue; stroke-width: 2;"
-    />
-  </svg>
-);
+// const nodeStyle = (
+//   <svg viewbox="0 0 50 20" xmlns="http://www.w3.org/2000/svg">
+//     <rect
+//       width="50"
+//       height="10"
+//       x="10"
+//       y="10"
+//       style="fill: skyblue; stroke: cadetblue; stroke-width: 2;"
+//     />
+//   </svg>
+// );
 
-const treeStyle = {
-  nodes: {
-    node: {
-      circle: <nodeStyle />,
-      name: <nodeStyle />,
-      attributes: <nodeStyle />
-    }
-  }
-};
+// const treeStyle = {
+//   nodes: {
+//     node: {
+//       circle: <nodeStyle />,
+//       name: <nodeStyle />,
+//       attributes: <nodeStyle />
+//     }
+//   }
+// };
 
 
 class NodeLabel extends React.PureComponent {
@@ -80,12 +79,12 @@ class NodeLabel extends React.PureComponent {
 
 export default function TreeView(props) {
   const [orgChart, setOrgChart] = useState(DummyData);
-  const [initialDepths, setIntialDepth] = useState(3);
+  // const [initialDepths, setIntialDepth] = useState(3);
   const [searchName, setSerchName] = useState("");
   
   const handleChangeForSerch = (e) => {
     setSerchName(e.target.value);
-    setIntialDepth(10);
+    // setIntialDepth(10);
   };
   
   const Handlesearch = () => {
@@ -125,7 +124,7 @@ export default function TreeView(props) {
       <Button
         onClick={() => {
           setOrgChart(DummyData);
-          setIntialDepth(0);
+          // setIntialDepth(0);
           setSerchName("");
         }}
       >
@@ -142,7 +141,7 @@ export default function TreeView(props) {
           data={orgChart}
           // nodeSvgShape={svgSquare}
           nodeSvgShape={test}
-          pathFunc="step"
+          pathFunc="elbow"
           separation={{ siblings: 2, nonSiblings: 2 }}
           orientation={"vertical"}
           translate={{ x: 800, y: 100 }}
@@ -156,7 +155,7 @@ export default function TreeView(props) {
               x: -100
             }
           }}
-          initialDepth={4}
+          initialDepth={9}
         />
       </div>
     </div>
