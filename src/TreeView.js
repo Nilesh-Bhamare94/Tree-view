@@ -99,7 +99,7 @@ export default function TreeView(props) {
         if (Array.isArray(object.children)) {
           const children = object.children.reduce(getNodes, []);
           // console.log('nodes', nodes)
-          console.log('object', object)
+          // console.log('object', object)
           if (children.length) result.push({ ...object, children });
         }
     
@@ -112,7 +112,7 @@ export default function TreeView(props) {
       return array.reduce(getNodes, []);
     }
 
-  console.log(filter(orgChart, 'foo'));
+  // console.log(filter(orgChart, 'foo'));
   setOrgChart(filter(orgChart, searchName)===undefined?orgChart:filter(orgChart,searchName))
  // searchName == "" ? window.alert("Enter search query"): setOrgChart(xyz);
 };
