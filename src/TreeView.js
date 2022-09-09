@@ -4,6 +4,7 @@ import Tree from "react-d3-tree";
 import { DummyData } from "./DummyData";
 import "./styles.css";
 import { Input, Button } from "antd";
+import 'antd/dist/antd.css';
 
 // const svgSquare = {
 //   shape: "rect",
@@ -66,12 +67,12 @@ class NodeLabel extends React.PureComponent {
           // left: "-10px",
           boxShadow: "0px 10px 10px rgba(0, 0, 0, 0.1)",
           padding: "5px 0",
-          borderRadius: "5px"
+          borderRadius: "15px"
         }}
       >
         {nodeData.name}
         <br></br>Department:
-        {nodeData.attributes?.department}
+        {nodeData.attributes?.department}<br></br>
       </div>
     );
   }
@@ -121,29 +122,20 @@ export default function TreeView(props) {
     <div className="App">
       <h1>VMSB OKR Tree Chart</h1>
       <div id="treeWrapper" style={{ width: "100%", height: "100vh" }}>
-      <Button
-        onClick={() => {
-          setOrgChart(DummyData);
-          // setIntialDepth(0);
-          setSerchName("");
-        }}
-      >
-        ResetData
-      </Button>
       <Input
         placeholder="serch name"
         onChange={handleChangeForSerch}
         value={searchName}
         style={{ width: "200px" }}
       />{" "}
-      <Button type="link" onClick={() => Handlesearch()}>Search</Button>
+      <Button type="primary" onClick={() => Handlesearch()}>Search</Button>
         <Tree
           data={orgChart}
           // nodeSvgShape={svgSquare}
           nodeSvgShape={test}
-          pathFunc="elbow"
+          pathFunc={"elbow"}
           separation={{ siblings: 2, nonSiblings: 2 }}
-          orientation={"vertical"}
+          orientation={props.oriantation}
           translate={{ x: 800, y: 100 }}
           allowForeignObjects={true}
           nodeLabelComponent={{
@@ -156,6 +148,7 @@ export default function TreeView(props) {
             }
           }}
           initialDepth={9}
+          transitionDuration={0}
         />
       </div>
     </div>

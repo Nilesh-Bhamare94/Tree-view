@@ -1,21 +1,23 @@
+import { Button } from "antd";
 import React, { useState } from "react";
 import TreeView from "./TreeView";
+import 'antd/dist/antd.css';
 
 function App() {
-  const [oriantation, setOriantastion] = useState("horizontal");
+  const [oriantation, setOriantation] = useState("horizontal");
 //   const [pathFunc, setPathFun] = useState("diagonal");
 
   return (
     <div className="App">
-      <button
+      <Button
         onClick={() =>
-          setOriantastion(
+          setOriantation(
             oriantation === "vertical" ? "horizontal" : "vertical"
           )
         }
       >
         {oriantation}
-      </button>
+      </Button>
       {/* <button
         onClick={() =>
           setPathFun(pathFunc === "diagonal" ? "step" : "diagonal")
